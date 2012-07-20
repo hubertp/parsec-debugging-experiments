@@ -29,7 +29,11 @@ unmanagedJars in Compile <++= (scalaHome, baseDirectory) map { (sHome, base) =>
   allJars.classpath
 }
 
-scalacOptions in Compile ++= Seq("-unchecked")//, "-Ymacro-debug-verbose", "-Xlog-implicits")
+scalacOptions in Compile ++= Seq("-unchecked")
+
+fork in run := true
+
+javaOptions in run += "-Dparsec.debug=false"
 
 scalaVersion := "2.10.0-SNAPSHOT"
 
